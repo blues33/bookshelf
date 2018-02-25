@@ -2,13 +2,43 @@ import React, {Component} from 'react';
 import './style.css';
 
 class Book extends Component {
+  constructor(props) {
+    super(props);
+
+    this.openCloseBook = this.openCloseBook.bind(this);
+
+    this.state = {
+      isBookOpen: false
+    }
+  }
+
+  openCloseBook() {
+    this.setState({
+      isOpenBook: !this.state.isOpenBook
+    })
+  }
+
+
   render() {
-    const {title, description} = this.props.book;
+    const {title, description, author, date_read} = this.props.book;
+    const isOpenBook = this.state.isOpenBook;
+    const bookDescription = isOpenBook && <div class="book-item-description">{description}</div>
 
     return (
       <div className="book-item">
-        {title}
-        {description}
+        <h2 class="book-item-title">{title}</h2>
+        <div class="book-item-author">{author}</div>
+        <div class="book-item-date">{date_read}</div>
+
+        <button
+          class="book-item-open-close-btn"
+          onClick={this.openCloseBook}>
+          Содержание
+        </button>
+
+        {bookDescription}
+
+
       </div>
     )
   }
