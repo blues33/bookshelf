@@ -26,12 +26,12 @@ class Book extends Component {
 
     return (
       <div className="book-item">
-        <h2 class="book-item-title">{title}</h2>
-        <div class="book-item-author">{author}</div>
-        <div class="book-item-date">{date_read}</div>
+        <h2 className="book-item-title">{title}</h2>
+        <div className="book-item-author">{author}</div>
+        <div className="book-item-date">{date_read}</div>
 
         <button
-          class="book-item-open-close-btn"
+          className="book-item-open-close-btn"
           onClick={this.openCloseBook}>
           Содержание
         </button>
