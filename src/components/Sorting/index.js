@@ -9,8 +9,8 @@ class Sorting extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange(e) {
+    this.props.onSortingChange(e.target.value);
   }
 
   render() {

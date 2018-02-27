@@ -6,6 +6,7 @@ class BookList extends Component {
   render() {
     const {books} = this.props.books;
     const {sorting} = this.props;
+
     const bookList = books.map((book) => <li key={book.id.toString()}><Book book={book}/></li>);
 
     return (
