@@ -11,6 +11,7 @@ class BooksHandler extends Component {
     this.state = {sorting: 'title'};
 
     this.handleSorting = this.handleSorting.bind(this);
+    this.sortingBooks = this.sortingBooks.bind(this);
   }
 
   handleSorting(value) {
@@ -18,11 +19,21 @@ class BooksHandler extends Component {
     console.log(value);
   }
 
+  sortingBooks(arrayBooks, sortingFlag) {
+    switch(sortingFlag) {
+      case 'date': return arrayBooks.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+      case 'author': return arrayBooks.sort((a, b) => a.author.localeCompare(b.author));
+      case 'title': return arrayBooks.sort((a, b) => a.title.localeCompare(b.title));
+    }
+  }
+
   render() {
+    let filteredBooks = this.sortingBooks(books.books.slice(), this.state.sorting);
+
     return (
       <div className="books-container">
         <Sorting onSortingChange={this.handleSorting}/>
-        <BookList books={books} sorting={this.state.sorting} />
+        <BookList books={filteredBooks} />
       </div>
     )
   }

@@ -20,15 +20,15 @@ class Book extends Component {
 
 
   render() {
-    const {title, description, author, date_read} = this.props.book;
+    const {title, description, author, date} = this.props.book;
     const isOpenBook = this.state.isOpenBook;
-    const bookDescription = isOpenBook && <div class="book-item-description">{description}</div>
+    const bookDescription = isOpenBook && <div className="book-item-description">{description}</div>
 
     return (
       <div className="book-item">
         <h2 className="book-item-title">{title}</h2>
         <div className="book-item-author">{author}</div>
-        <div className="book-item-date">{date_read}</div>
+        <div className="book-item-date">{date}</div>
 
         <button
           className="book-item-open-close-btn"
