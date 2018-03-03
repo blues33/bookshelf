@@ -1,0 +1,26 @@
+:root {
+  --header-bg-color: #0e83cd;
+  --header-height: 60px;
+}
+.header {
+  background-color: var(--header-bg-color);
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.statistics-btn {
+  background-color: transparent;
+  border: 2px solid #fff;
+  font-family: 'open-sans-bold';
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.statistics-btn:hover {
+  background-color: #fff;
+  color: var(--header-bg-color);
+}
