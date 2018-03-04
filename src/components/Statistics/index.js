@@ -21,7 +21,7 @@ class Statistics extends Component {
       }
       authorNumber.set(item.author, authorNumber.get(item.author) + 1)
     })
-    
+
     return authorNumber;
   }
 
@@ -31,7 +31,7 @@ class Statistics extends Component {
     console.log(this.calculatingFavoriteAuthor(books));
 
     return (
-      <div className="statistics-modal-wrapper">
+      <div className="statistics-modal-wrapper" >
         <div className="statistics-modal-window">
           <div className="statistics-modal-window-wrapper">
             <button className="statistics-modal-close-btn" onClick={this.closeStatisticsModal}></button>

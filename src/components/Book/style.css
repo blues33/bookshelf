@@ -21,3 +21,31 @@
 .book-item-description {
 
 }
+
+.book-item-open-close-btn {
+  position: relative;
+  background-color: #0e83cd;
+  color: #fff;
+  border: 0;
+  padding: 10px 30px 10px 10px;
+  font-family: 'open-sans-bold';
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.book-item-open-close-btn::after {
+  position: absolute;
+  right: 4px;
+  display: block;
+  content: '';
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url('../../assets/images/icons/down-arrow.svg');
+  background-size: cover;
+}
+
+.book-item-open-close-btn.open::after {
+  transform: translateY(-50%) rotate(180deg);
+}

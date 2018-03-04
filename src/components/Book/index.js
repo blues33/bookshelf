@@ -31,7 +31,7 @@ class Book extends Component {
         <div className="book-item-date">{date}</div>
 
         <button
-          className="book-item-open-close-btn"
+          className={"book-item-open-close-btn " + (isOpenBook ? 'open': 'close')}
           onClick={this.openCloseBook}>
           Содержание
         </button>
