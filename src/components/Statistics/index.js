@@ -15,6 +15,8 @@ class Statistics extends Component {
 
   calculatingFavoriteAuthor(books) {
     let authorNumber = new Map();
+    let authorNumberArray = [];
+
     books.forEach((item) => {
       if (!authorNumber.has(item.author)) {
           authorNumber.set(item.author, 0);
@@ -22,13 +24,18 @@ class Statistics extends Component {
       authorNumber.set(item.author, authorNumber.get(item.author) + 1)
     })
 
-    return authorNumber;
+    for(let [key, value] of authorNumber) {
+      authorNumberArray.push({author: key, number: value});
+    }
+
+    return authorNumberArray.sort((a, b) => b.number - a.number);
   }
 
 
   render() {
     const {books} = this.props.books;
-    console.log(this.calculatingFavoriteAuthor(books));
+    const authorNumberArray = this.calculatingFavoriteAuthor(books);
+    const authorNumberList = authorNumberArray.map((book) => <li><span>{book.author}</span><span>{book.number}</span></li>);
 
     return (
       <div className="statistics-modal-wrapper" >
@@ -43,7 +50,9 @@ class Statistics extends Component {
 
             <div className="statistics-modal-favorite-author">
               <span>Любимый автор: </span>
-              <span>{books.length}</span>
+              <ul>
+                {authorNumberList}
+              </ul>
             </div>
 
           </div>
