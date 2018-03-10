@@ -7,6 +7,7 @@ class Statistics extends Component {
 
     this.closeStatisticsModal = this.closeStatisticsModal.bind(this);
     this.calculatingFavoriteAuthor = this.calculatingFavoriteAuthor.bind(this);
+    this.getDateSinceLastBookRead = this.getDateSinceLastBookRead.bind(this);
   }
 
   closeStatisticsModal() {
@@ -24,18 +25,29 @@ class Statistics extends Component {
       authorNumber.set(item.author, authorNumber.get(item.author) + 1)
     })
 
+    let bookId = 0;
     for(let [key, value] of authorNumber) {
-      authorNumberArray.push({author: key, number: value});
+      authorNumberArray.push({id: bookId, author: key, number: value});
+      bookId++;
     }
 
     return authorNumberArray.sort((a, b) => b.number - a.number);
   }
 
+  getDateSinceLastBookRead(books) {
+    const arrayDateBooks = books.map((book) => Date.parse(book.date));
+    const dateLastBook = Math.max.apply(null, arrayDateBooks); // milliseconds
+    const nowDate = Date.parse(new Date()); // milliseconds
+    const timeDiff = nowDate - dateLastBook;
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return diffDays;
+  }
 
   render() {
     const {books} = this.props.books;
     const authorNumberArray = this.calculatingFavoriteAuthor(books);
-    const authorNumberList = authorNumberArray.map((book) => <li><span>{book.author}</span><span>{book.number}</span></li>);
+    const authorNumberList = authorNumberArray.map((book) => <li key={book.id}><span>{book.author}</span><span>{book.number}</span></li>);
+    const dateSinceLastBookRead = this.getDateSinceLastBookRead(books);
 
     return (
       <div className="statistics-modal-wrapper" >
@@ -49,10 +61,15 @@ class Statistics extends Component {
             </div>
 
             <div className="statistics-modal-favorite-author">
-              <span>Любимый автор: </span>
-              <ul>
+              <span>Любимые авторы: </span>
+              <ul className="statistics-modal-favorite-author-list">
                 {authorNumberList}
               </ul>
+            </div>
+
+            <div className="statistics-modal-last-book-read">
+              <span>Со дня прочтения последней книги прошло: </span>
+              <span>{dateSinceLastBookRead} дней</span>
             </div>
 
           </div>

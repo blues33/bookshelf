@@ -35,3 +35,13 @@
   border: 0;
   cursor: pointer;
 }
+
+.statistics-modal-favorite-author-list {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.statistics-modal-favorite-author-list li {
+  display: flex;
+  justify-content: space-between;
+}
