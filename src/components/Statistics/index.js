@@ -8,6 +8,7 @@ class Statistics extends Component {
     this.closeStatisticsModal = this.closeStatisticsModal.bind(this);
     this.calculatingFavoriteAuthor = this.calculatingFavoriteAuthor.bind(this);
     this.getDateSinceLastBookRead = this.getDateSinceLastBookRead.bind(this);
+    this.getNumberBooksLastYear = this.getNumberBooksLastYear.bind(this);
   }
 
   closeStatisticsModal() {
@@ -43,11 +44,16 @@ class Statistics extends Component {
     return diffDays;
   }
 
+  getNumberBooksLastYear(books) {
+    return;
+  }
+
   render() {
     const {books} = this.props.books;
     const authorNumberArray = this.calculatingFavoriteAuthor(books);
     const authorNumberList = authorNumberArray.map((book) => <li key={book.id}><span>{book.author}</span><span>{book.number}</span></li>);
     const dateSinceLastBookRead = this.getDateSinceLastBookRead(books);
+    this.getNumberBooksLastYear(books);
 
     return (
       <div className="statistics-modal-wrapper" >
@@ -70,6 +76,11 @@ class Statistics extends Component {
             <div className="statistics-modal-last-book-read">
               <span>Со дня прочтения последней книги прошло: </span>
               <span>{dateSinceLastBookRead} дней</span>
+            </div>
+
+            <div className="statistics-modal-last-year">
+              <span>За последний год прочитано: </span>
+              <span></span>
             </div>
 
           </div>
