@@ -45,7 +45,14 @@ class Statistics extends Component {
   }
 
   getNumberBooksLastYear(books) {
-    return;
+    const millisecondsInYear = 365 * 24 * 60 * 60 * 1000;
+    const nowDate = Date.parse(new Date());
+    const pointDate = nowDate - millisecondsInYear;
+    const arrayDateBooks = books.map((book) => Date.parse(book.date));
+    const numberBooksInLastYear = arrayDateBooks.reduce((countNumber, currentDateBook) => {
+      return currentDateBook > pointDate ? countNumber + 1 : countNumber;
+    }, 0)
+    return numberBooksInLastYear;
   }
 
   render() {
@@ -53,7 +60,7 @@ class Statistics extends Component {
     const authorNumberArray = this.calculatingFavoriteAuthor(books);
     const authorNumberList = authorNumberArray.map((book) => <li key={book.id}><span>{book.author}</span><span>{book.number}</span></li>);
     const dateSinceLastBookRead = this.getDateSinceLastBookRead(books);
-    this.getNumberBooksLastYear(books);
+    const numberBooksInLastYear = this.getNumberBooksLastYear(books);
 
     return (
       <div className="statistics-modal-wrapper" >
@@ -80,7 +87,7 @@ class Statistics extends Component {
 
             <div className="statistics-modal-last-year">
               <span>За последний год прочитано: </span>
-              <span></span>
+              <span>{numberBooksInLastYear}</span>
             </div>
 
           </div>
