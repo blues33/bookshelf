@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BooksHandler from './BooksHandler';
 import Header from './Header';
 import Statistics from './Statistics';
-import books from '../books.json';
+import books from '../api/books.json';
 import './base.css'
 
 class App extends Component {

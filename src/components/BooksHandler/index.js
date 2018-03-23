@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Sorting from '../Sorting'
 import BookList from '../BookList'
-import books from '../../books.json';
+import books from '../../api/books.json';
 
 import './style.css';
 
