@@ -1,3 +1,9 @@
 .books-container {
   padding: 10px;
 }
+
+.preloader {
+  background: url('../../assets/images/icons/spinner.svg') center 150px no-repeat;
+  width: 100%;
+  height: 100vh;
+}

@@ -8,16 +8,36 @@ import './style.css';
 class BooksHandler extends Component {
   constructor(props) {
     super(props);
-    this.state = {sorting: 'title'};
+    this.state = {
+      sorting: 'title',
+      books: null
+    };
 
     this.handleSorting = this.handleSorting.bind(this);
     this.sortingBooks = this.sortingBooks.bind(this);
   }
 
+
+  componentDidMount() {
+    fetch('http://localhost:4000/books/')
+    .then(response => {
+      if (response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response.json())
+      }
+      else {
+        const error = new Error(response.statusText || response.status);
+        return Promise.reject(error);
+      }
+    })
+    .then(data => this.setState({books: data}))
+    .catch(error => console.log(error))
+  }
+
+
   handleSorting(value) {
     this.setState({sorting: value});
-    console.log(value);
   }
+
 
   sortingBooks(arrayBooks, sortingFlag) {
     switch(sortingFlag) {
@@ -27,8 +47,16 @@ class BooksHandler extends Component {
     }
   }
 
+
   render() {
-    let filteredBooks = this.sortingBooks(books.books.slice(), this.state.sorting);
+
+    if (!this.state.books) {
+      return (
+        <div className="preloader"></div>
+      )
+    }
+
+    let filteredBooks = this.sortingBooks(this.state.books.slice(), this.state.sorting);
 
     return (
       <div className="books-container">
