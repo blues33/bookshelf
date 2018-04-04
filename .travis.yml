@@ -7,3 +7,9 @@ node_js:
 branches:
   only:
     - master
+
+deploy:
+  provider: heroku
+  app: "bookshelff"
+  api_key:
+    secure: "ee5aa9e8-93dc-4961-8ff3-b02f8ec06398"
