@@ -13,3 +13,8 @@ deploy:
   app: "bookshelff"
   api_key:
     secure: "ee5aa9e8-93dc-4961-8ff3-b02f8ec06398"
+
+
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
