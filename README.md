@@ -5,8 +5,6 @@ run - `npm start`
 [![Travis][build-badge]][build]
 [![Coveralls][coveralls-badge]][coveralls]
 
-Awesome factory line manager!
-
 [build-badge]: https://img.shields.io/travis/patrickjsmirnov/bookshelf/master.png?style=flat-square
 [build]: https://travis-ci.org/patrickjsmirnov/bookshelf
 
