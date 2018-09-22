@@ -1,37 +1,33 @@
 import React, { Component } from 'react';
-import BooksHandler from './BooksHandler';
-import Header from './Header';
-import Statistics from './Statistics';
-import books from '../api/books.json';
+import Add from '../components/Add'
+import List from '../components/List'
 import './base.css'
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {isStatisticsModalOpen: false};
-    this.openStatisticsModal = this.openStatisticsModal.bind(this);
-    this.closeStatisticsModal = this.closeStatisticsModal.bind(this);
-  }
-
-  openStatisticsModal() {
-    this.setState({isStatisticsModalOpen: true})
-  }
-
-  closeStatisticsModal() {
-    this.setState({isStatisticsModalOpen: false})
-  }
-
   render() {
     return (
-      <div>
-        {this.state.isStatisticsModalOpen &&
-          <Statistics closeStatistics={this.closeStatisticsModal} books={books} />}
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/add">Add</Link>
+              <Link to="/list">List</Link>
+            </li>
+          </ul>
 
-        <Header openStatistics={this.openStatisticsModal} />
-        <BooksHandler />
-      </div>
-    );
+          <hr />
+
+          <Route path="/add" component={Add} />
+          <Route path="/list" component={List} />
+        </div>
+      </Router>
+    )
   }
 }
 

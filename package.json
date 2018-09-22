@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.17",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.1",
+    "redux": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start & npm run apiserver",
@@ -15,7 +20,9 @@
     "apiserver": "json-server --watch --port 4000 src/api/books.json"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-preset-flow": "^6.23.0",
     "codecov.io": "^0.1.6",
     "coveralls": "^3.0.0",
     "eslint": "^4.19.1",

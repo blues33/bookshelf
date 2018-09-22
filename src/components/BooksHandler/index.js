@@ -17,21 +17,6 @@ class BooksHandler extends Component {
   }
 
 
-  componentDidMount() {
-    fetch('http://localhost:4000/books/')
-    .then(response => {
-      if (response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response.json())
-      }
-      else {
-        const error = new Error(response.statusText || response.status);
-        return Promise.reject(error);
-      }
-    })
-    .then(data => this.setState({books: data}))
-    .catch(error => console.log(error))
-  }
-
 
   handleSorting(value) {
     this.setState({sorting: value});
