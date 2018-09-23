@@ -22,7 +22,7 @@ app.post('/add', (req, res) => {
   const postData = new Post(req.body);
 
   postData.save().then( result => {
-    res.redirect('/');
+    res.redirect('http://localhost:3000/list');
   }).catch(err => {
     res.status(400).send("Unable to save data");
   });

@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, {Component} from 'react';
+import { css } from 'css-literal-loader/styled';
+
+
+const styles = css`
+  .header {
+    color: black;
+    width: 100%;
+    height: 50px;
+    background-color: '#ccc'
+  }
+`;
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.openStatisticsModal = this.openStatisticsModal.bind(this);
-  }
-
-  openStatisticsModal() {
-    this.props.openStatistics();
-  }
 
   render() {
 
     return (
-      <div className="header">
-        <button className="statistics-btn" onClick={this.openStatisticsModal}>Статистика</button>
+      <div className={styles.header}>
+        header
       </div>
-    );
+    )
   }
 }
 

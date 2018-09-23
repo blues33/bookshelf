@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Add from '../components/Add'
 import List from '../components/List'
-import './base.css'
+import Header from '../components/Header'
 
 import {
   BrowserRouter as Router,
@@ -13,6 +13,8 @@ class App extends Component {
   render() {
     return (
       <Router>
+        {/*<Header />*/}
+
         <div>
           <ul>
             <li>
