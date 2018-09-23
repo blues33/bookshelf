@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 import { css } from 'css-literal-loader/styled';
 
@@ -24,3 +25,5 @@ class Header extends Component {
 }
 
 export default Header;
+=======
+>>>>>>> dd19951a8c00689506f2a8b60ba0e2fdacb14027
