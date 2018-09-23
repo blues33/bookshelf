@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import Add from '../components/Add'
 import List from '../components/List'
-<<<<<<< HEAD
-import Header from '../components/Header'
-=======
->>>>>>> dd19951a8c00689506f2a8b60ba0e2fdacb14027
 
 import {
   BrowserRouter as Router,
@@ -16,7 +12,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/*<Header />*/}
 
         <div>
           <ul>
