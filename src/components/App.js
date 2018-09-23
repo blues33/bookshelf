@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Add from '../components/Add'
 import List from '../components/List'
-import './base.css'
 
 import {
   BrowserRouter as Router,
