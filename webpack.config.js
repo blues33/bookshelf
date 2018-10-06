@@ -14,6 +14,8 @@ module.exports = {
 
   devServer: {
     historyApiFallback: true,
+    port: 9000,
+    contentBase: path.resolve('public'),
   },
 
   output: {
@@ -32,16 +34,19 @@ module.exports = {
             loader: 'style-loader',
           },
           {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              minimize: true,
-              modules: true
-            }
+            loader: 'astroturf/css-loader',
           },
-          {
-            loader: 'postcss-loader'
-          }
+          // {
+          //   loader: 'css-loader',
+          //   options: {
+          //     importLoaders: 1,
+          //     minimize: true,
+          //     modules: true
+          //   }
+          // },
+          // {
+          //   loader: 'postcss-loader'
+          // }
         ]
       },
       {
@@ -59,9 +64,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
-        }
+        use: ['babel-loader', 'astroturf/loader']
+
       }
     ]
   }

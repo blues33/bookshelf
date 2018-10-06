@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "astroturf": "^0.7.1",
     "body-parser": "^1.18.3",
     "css-literal-loader": "^0.5.3",
     "express": "^4.16.3",
@@ -28,6 +29,7 @@
     "babel-core": "^7.0.0-beta.3",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^8.0.2",
+    "babel-plugin-styled-components": "^1.8.0",
     "babel-preset-flow": "^6.23.0",
     "codecov.io": "^0.1.6",
     "coveralls": "^3.0.0",
@@ -37,7 +39,8 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.7.0",
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "webpack-dev-server": "^3.1.9"
   },
   "main": "index.js",
   "repository": "https://github.com/patrickjsmirnov/bookshelf.git",

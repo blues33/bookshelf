@@ -1,6 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) & [typicode/json-server](https://github.com/typicode/json-server)
 
-run - `npm start`
+run dev - `npm run start:dev`
+
+server API - `node server/index.js`
+
 
 [![Travis][build-badge]][build]
 [![Coveralls][coveralls-badge]][coveralls]

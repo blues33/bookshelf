@@ -1,32 +1,11 @@
 import React, { Component } from 'react';
-import Add from '../components/Add'
-import List from '../components/List'
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import Main from '../components/Main'
+import '../assets/styles/base.css'
 
 class App extends Component {
   render() {
     return (
-      <Router>
-
-        <div>
-          <ul>
-            <li>
-              <Link to="/add">Add</Link>
-              <Link to="/list">List</Link>
-            </li>
-          </ul>
-
-          <hr />
-
-          <Route path="/add" component={Add} />
-          <Route path="/list" component={List} />
-        </div>
-      </Router>
+      <Main />
     )
   }
 }

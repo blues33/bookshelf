@@ -1,29 +1,25 @@
-<<<<<<< HEAD
 import React, {Component} from 'react';
-import { css } from 'css-literal-loader/styled';
-
+import { css } from 'astroturf';
+import Nav from '../Nav'
 
 const styles = css`
   .header {
-    color: black;
-    width: 100%;
     height: 50px;
-    background-color: '#ccc'
+    background-color: #fafafa;
   }
 `;
+
 
 class Header extends Component {
 
   render() {
 
     return (
-      <div className={styles.header}>
-        header
-      </div>
+      <header className={ styles.header }>
+        <Nav />
+      </header>
     )
   }
 }
 
 export default Header;
-=======
->>>>>>> dd19951a8c00689506f2a8b60ba0e2fdacb14027
