@@ -12,10 +12,3 @@ server API - `node server/index.js`
 
 [coveralls-badge]: https://img.shields.io/coveralls/patrickjsmirnov/bookshelf/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/patrickjsmirnov/bookshelf
-
-
-// ToDo
-
-1. redux
-2. style
-2. react-router

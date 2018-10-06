@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { css } from 'astroturf';
-import Nav from '../Nav'
+import Nav from '../Nav';
 
 const styles = css`
   .header {
@@ -9,17 +9,10 @@ const styles = css`
   }
 `;
 
-
-class Header extends Component {
-
-  render() {
-
-    return (
-      <header className={ styles.header }>
-        <Nav />
-      </header>
-    )
-  }
-}
+const Header = () => (
+  <header className={styles.header}>
+    <Nav />
+  </header>
+);
 
 export default Header;

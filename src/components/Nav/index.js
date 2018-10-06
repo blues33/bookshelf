@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'astroturf';
-import Menu from '../Menu'
+import Menu from '../Menu';
 
 const styles = css`
   .nav {
@@ -8,10 +8,10 @@ const styles = css`
   }
 `;
 
-const Nav = (props) => (
+const Nav = () => (
   <div className={styles.nav}>
     <Menu />
   </div>
-)
+);
 
 export default Nav;

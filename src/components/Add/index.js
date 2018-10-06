@@ -1,23 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Add extends Component {
+const Add = () => (
+  <div>
+    <form action="http://localhost:3001/add" method="post">
+      <input type="text" name="title" />
+      <textarea name="body" id="" cols="30" rows="10" />
+      <input type="text" name="author" />
+      <input type="submit" value="Save" />
 
-  render() {
-
-    return (
-      <div>
-        <form action="http://localhost:3001/add" method="post">
-          <input type="text" name="title" />
-          <textarea name="body" id="" cols="30" rows="10"></textarea>
-          <input type="text" name="author" />
-          <input type="submit" value="Save"/>
-
-        </form>
-      </div>
-    )
-  }
-}
-
-
+    </form>
+  </div>
+);
 
 export default Add;

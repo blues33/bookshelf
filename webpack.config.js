@@ -64,7 +64,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: ['babel-loader', 'astroturf/loader']
+        use: ['babel-loader', 'astroturf/loader', 'eslint-loader']
 
       }
     ]

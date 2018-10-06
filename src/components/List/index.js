@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 class List extends Component {
+
   state = {
     books: []
   }
-
 
   componentDidMount() {
     fetch('http://localhost:3001/books')
