@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class List extends Component {
+export default class List extends Component {
 
   state = {
     books: []
@@ -14,7 +14,6 @@ class List extends Component {
         }))
   }
 
-
   renderBook = (book) => (
     <li key={book._id}>
       <div>{ book.title }</div>
@@ -24,7 +23,6 @@ class List extends Component {
   )
 
   render() {
-
 
     return (
       <div>
@@ -37,7 +35,3 @@ class List extends Component {
     )
   }
 }
-
-
-
-export default List;

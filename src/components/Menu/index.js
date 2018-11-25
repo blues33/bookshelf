@@ -6,11 +6,14 @@ const styles = css`
   .menu {
     color: black;
     list-style: none;
-    display: flex;
-  }
-  
-  .menuItem {
-    margin-right: 10px;
+    display: grid;
+    grid-template-columns: 40px 40px;
+    grid-column-gap: 10px;
+    justify-items: start;
+    align-items: start;
+    justify-content: start;
+    align-content: start;
+    grid-auto-flow: column;
   }
   
   .menuLink {

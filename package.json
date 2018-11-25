@@ -6,6 +6,7 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "astroturf": "^0.7.1",
+    "babel": "^6.23.0",
     "body-parser": "^1.18.3",
     "css-literal-loader": "^0.5.3",
     "express": "^4.16.3",

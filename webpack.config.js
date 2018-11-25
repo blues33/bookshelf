@@ -58,13 +58,13 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
-          'file-loader'
-        ]
+          'file-loader',
+        ],
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: ['babel-loader', 'astroturf/loader', 'eslint-loader']
+        use: ['babel-loader', 'astroturf/loader'],
 
       }
     ]

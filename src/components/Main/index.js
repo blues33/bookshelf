@@ -13,6 +13,6 @@ const Main = () => (
       <Route path="/add" component={Add} />
     </Switch>
   </main>
-)
+);
 
 export default Main;
