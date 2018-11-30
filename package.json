@@ -43,11 +43,22 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "^7.11.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "webpack": "^4.19.1",
     "webpack-dev-server": "^3.1.9"
   },
   "main": "index.js",
   "repository": "https://github.com/patrickjsmirnov/bookshelf.git",
   "author": "Dmitriy <patrickjsmirnov@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+  "*.js": ["eslint --fix", "git add"]
+  }
 }
