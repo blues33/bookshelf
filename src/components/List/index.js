@@ -6,14 +6,6 @@ export default class List extends Component {
     books: []
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3001/books')
-      .then((response) => response.json()
-        .then((data) => {
-          this.setState({books: data})
-        }))
-  }
-
   renderBook = (book) => (
     <li key={book._id}>
       <div>{ book.title }</div>
