@@ -63,10 +63,9 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "git add"
-    ],
+    "linters": {
+      "*.js": ["eslint", "git add"]
+    },
     "ignore": ["node_modules"]
   }
 }
