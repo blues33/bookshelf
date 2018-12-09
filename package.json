@@ -65,7 +65,6 @@
   "lint-staged": {
     "linters": {
       "*.js": ["eslint", "git add"]
-    },
-    "ignore": ["node_modules"]
+    }
   }
 }
