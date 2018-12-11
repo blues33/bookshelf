@@ -1,19 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import List from '../../components/List';
 import fetchList from '../../actions/list';
+import listSelector from '../../selectors/list';
 
 class ListContainer extends React.PureComponent {
-
   componentDidMount() {
-    console.log('componentDidMount')
-    this.props.fetchList();
+    const { fetchList: fetch } = this.props;
+    fetch();
   }
 
   render() {
     return (
-      <div><List /></div>
+      <div>empty</div>
     );
   }
 }
@@ -22,7 +21,11 @@ const mapDispatchToProps = {
   fetchList,
 };
 
-export default connect(null, mapDispatchToProps)(ListContainer);
+const mapStateToProps = state => ({
+  books: listSelector(state),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);
 
 ListContainer.propTypes = {
   fetchList: PropTypes.func.isRequired,

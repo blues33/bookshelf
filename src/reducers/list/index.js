@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     isSuccess: false,
     isFailure: false,
   },
-  data: {},
+  data: [],
 };
 
 export default function List(state = INITIAL_STATE, action) {
@@ -31,7 +31,7 @@ export default function List(state = INITIAL_STATE, action) {
           isSuccess: true,
           isFailure: false,
         },
-        data: action.response.data,
+        data: action.response,
       };
 
     case listActionsConstants.FETCH_FAILURE:
@@ -42,7 +42,7 @@ export default function List(state = INITIAL_STATE, action) {
           isSuccess: false,
           isFailure: true,
         },
-        data: {},
+        data: [],
       };
 
     default:

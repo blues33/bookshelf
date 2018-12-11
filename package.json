@@ -12,6 +12,7 @@
     "express": "^4.16.3",
     "mirror-creator": "^1.1.0",
     "mongoose": "^5.2.17",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.1.1",
@@ -20,6 +21,7 @@
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "webpack-cli": "^3.1.1"
   },
   "scripts": {
@@ -49,7 +51,6 @@
     "eslint-plugin-react": "^7.11.0",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
-    "prop-types": "^15.6.2",
     "webpack": "^4.19.1",
     "webpack-dev-server": "^3.1.9"
   },
@@ -64,7 +65,10 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": ["eslint", "git add"]
+      "*.js": [
+        "eslint",
+        "git add"
+      ]
     }
   }
 }
