@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Setup
 const express = require('express');
 
@@ -5,41 +6,82 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
-const mongoose = require('mongoose');
+app.use(bodyParser());
 
-mongoose.connect('mongodb://localhost:27017/bookshelf');
+const { Pool, Client } = require('pg')
 
-const postSchema = new mongoose.Schema({
-  body: String,
-  title: String,
-  author: String,
-});
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: '123'
+})
 
-const Post = mongoose.model('Post', postSchema);
+const getBooks = async function(limit) {
+  const table = 'books'
+  const query = `SELECT * FROM ${table} LIMIT ${limit}`
+  try {
+    const { rows } = await pool.query(query)
+    return rows
+  } catch(e) {
+    console.log('error')
+  } finally {
+    console.log('finally')
+  }
+};
 
+const addBook = async function(book) {
+  const table = 'books'
+  const query = `INSERT INTO ${table} (title, author, description) VALUES ($1, $2, $3) RETURNING *`
+  const values = [book.title, book.author, book.description]
+  console.log('values = ', values)
+  try {
+    const { rows } = await pool.query(query, values)
+    return rows[0]
+  } catch(e) {
+    console.log('error')
+  } finally {
+    console.log('finally')
+  }
+};
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.get('/books', async (req, res, next) => {
+  try {
+    const limit = req.query.limit || 100
+    const books = await getBooks(limit);
+    res.json(books);
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e);
+  }
+})
 
-app.post('/add', (req, res) => {
-  const postData = new Post(req.body);
+app.post('/add', async (req, res, next) => {
+  try {
+    const { title, author, description } = req.body;
+    const book = {
+      title,
+      author, 
+      description
+    };
+    console.log('books in add = ', book)
 
-  postData.save().then(() => {
-    res.redirect('http://localhost:9000/list');
-  }).catch(() => {
-    res.status(400).send('Unable to save data');
-  });
-});
+    await addBook(book);
 
-app.get('/books', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e);
+  }
+})
 
-  const query = Post.find({}).select('-__v');
-
-  query.exec((err, posts) => {
-    res.send(posts);
-  });
-});
+app.get('/', async (req, res, next) => {
+  try {
+    res.json(req.query);
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e) 
+  }
+})
 
 // Listen
 app.listen(3001, () => {});
