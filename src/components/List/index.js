@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 
 export default class List extends Component {
-/* eslint-disable */
+
   renderBook = book => (
     <li key={book.id}>
       <div>{book.title}</div>

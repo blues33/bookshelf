@@ -6,6 +6,7 @@ export const API_CALL = Symbol('API_Symbol');
 
 export default store => next => (action) => {
   const API_CALL_DATA = action[API_CALL]
+  console.log(API_CALL_DATA)
 
   if (typeof API_CALL_DATA === 'undefined') {
     return next(action);

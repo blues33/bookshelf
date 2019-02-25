@@ -34,10 +34,9 @@ const addBook = async function(book) {
   const table = 'books'
   const query = `INSERT INTO ${table} (title, author, description) VALUES ($1, $2, $3) RETURNING *`
   const values = [book.title, book.author, book.description]
-  console.log('values = ', values)
   try {
     const { rows } = await pool.query(query, values)
-    return rows[0]
+    return !!rows[0]
   } catch(e) {
     console.log('error')
   } finally {
@@ -64,9 +63,11 @@ app.post('/add', async (req, res, next) => {
       author, 
       description
     };
-    console.log('books in add = ', book)
 
-    await addBook(book);
+    const isAdded = await addBook(book);
+    const message = isAdded ? 'success' : 'failure';
+    console.log('message = ', message)
+    res.json({message});
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware

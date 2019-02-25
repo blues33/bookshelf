@@ -1,7 +1,6 @@
 /* eslint-disable */
 export default function api(route, data, parseResponse = true) {
-  const ROUTE = route;
-
+  const ROUTE = route.path
   const defaultParams = {
     headers: {
       Accept: 'application/json',
@@ -9,6 +8,7 @@ export default function api(route, data, parseResponse = true) {
     },
     body: JSON.stringify(data),
     credentials: 'omit',
+    ...route.params
   };
 
   return fetch(ROUTE, defaultParams)
