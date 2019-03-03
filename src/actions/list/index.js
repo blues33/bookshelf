@@ -6,8 +6,8 @@ const fetchList = () => ({
     route: {
       path: 'http://localhost:3001/books',
       params: {
-        method: 'GET'
-      }
+        method: 'GET',
+      },
     },
     types: [
       listActionsContstant.FETCH_REQUEST,
@@ -22,16 +22,35 @@ const add = data => ({
     route: {
       path: 'http://localhost:3001/add',
       params: {
-        method: 'POST'
-      }
+        method: 'POST',
+      },
     },
     types: [
       listActionsContstant.ADD_FETCH_REQUEST,
       listActionsContstant.ADD_FETCH_SUCCESS,
       listActionsContstant.ADD_FETCH_FAILURE,
     ],
-    data
+    data,
   },
 });
 
-export {fetchList, add};
+const deleteBookById = id => ({
+  [API_CALL]: {
+    route: {
+      path: 'http://localhost:3001/delete',
+      params: {
+        method: 'POST',
+      },
+    },
+    types: [
+      listActionsContstant.DELETE_FETCH_REQUEST,
+      listActionsContstant.DELETE_FETCH_SUCCESS,
+      listActionsContstant.DELETE_FETCH_FAILURE,
+    ],
+    data: {
+      id,
+    },
+  },
+});
+
+export { fetchList, add, deleteBookById };

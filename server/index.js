@@ -1,4 +1,3 @@
-/* eslint-disable */
 // Setup
 const express = require('express');
 
@@ -8,81 +7,102 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser());
 
-const { Pool, Client } = require('pg')
+const { Pool } = require('pg');
 
+// create pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'postgres',
-  password: '123'
-})
+  password: '123',
+});
 
-const getBooks = async function(limit) {
-  const table = 'books'
-  const query = `SELECT * FROM ${table} LIMIT ${limit}`
+// getting books
+const getBooks = async function (limit) {
+  const table = 'books';
+  const query = `SELECT * FROM ${table} LIMIT ${limit}`;
   try {
-    const { rows } = await pool.query(query)
-    return rows
-  } catch(e) {
-    console.log('error')
-  } finally {
-    console.log('finally')
+    const { rows } = await pool.query(query);
+    return rows;
+  } catch (e) {
+    return e;
   }
 };
 
-const addBook = async function(book) {
-  const table = 'books'
-  const query = `INSERT INTO ${table} (title, author, description) VALUES ($1, $2, $3) RETURNING *`
-  const values = [book.title, book.author, book.description]
+// add book
+const addBook = async function (book) {
+  const table = 'books';
+  const query = `INSERT INTO ${table} (title, author, description) VALUES ($1, $2, $3) RETURNING *`;
+  const values = [book.title, book.author, book.description];
   try {
-    const { rows } = await pool.query(query, values)
-    return !!rows[0]
-  } catch(e) {
-    console.log('error')
-  } finally {
-    console.log('finally')
+    const { rows } = await pool.query(query, values);
+    return !!rows[0];
+  } catch (e) {
+    return e;
   }
 };
 
+// delete book
+const deleteBook = async function (id) {
+  const table = 'books';
+  const query = `DELETE FROM ${table} WHERE id = $1`;
+  try {
+    const { rows } = await pool.query(query, [id]);
+    return !!rows[0];
+  } catch (e) {
+    return e;
+  }
+};
+
+// get books router
 app.get('/books', async (req, res, next) => {
   try {
-    const limit = req.query.limit || 100
+    const limit = req.query.limit || 100;
     const books = await getBooks(limit);
     res.json(books);
   } catch (e) {
-    //this will eventually be handled by your error handling middleware
     next(e);
   }
-})
+});
 
+// add book router
 app.post('/add', async (req, res, next) => {
   try {
     const { title, author, description } = req.body;
     const book = {
       title,
-      author, 
-      description
+      author,
+      description,
     };
 
     const isAdded = await addBook(book);
     const message = isAdded ? 'success' : 'failure';
-    console.log('message = ', message)
-    res.json({message});
-
+    res.json({ message });
   } catch (e) {
-    //this will eventually be handled by your error handling middleware
     next(e);
   }
-})
+});
 
+// delete book router
+app.post('/delete', async (req, res, next) => {
+  try {
+    const { id } = req.body;
+    const isDeleted = await deleteBook(id);
+    const message = isDeleted ? 'success' : 'failure';
+    res.json({ message });
+  } catch (e) {
+    next(e);
+  }
+});
+
+// main router
 app.get('/', async (req, res, next) => {
   try {
     res.json(req.query);
   } catch (e) {
-    //this will eventually be handled by your error handling middleware
-    next(e) 
+    next(e);
   }
-})
+});
 
 // Listen
 app.listen(3001, () => {});

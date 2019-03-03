@@ -1,13 +1,19 @@
 /* eslint-disable */
 import React, { Component } from 'react';
+import Books from '../../components/Book'
+import Book from "../Book";
 
 export default class List extends Component {
 
   renderBook = book => (
     <li key={book.id}>
-      <div>{book.title}</div>
-      <div>{book.author}</div>
-      <div>{book.description}</div>
+      <Book
+        id={ book.id }
+        title={ book.title }
+        author={ book.author }
+        description={ book.description }
+        deleteBookById={ this.props.deleteBookById }
+      />
     </li>
   );
 
